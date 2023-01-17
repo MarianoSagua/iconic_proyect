@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
+
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Source Serif Pro', serif;
 }
 
 // html, body{
@@ -85,23 +88,27 @@
 }
 
 .contenedorHeader{
-  height: 10vh;
+  height: 5vh;
 }
 
 .contenedorMain{
-  height: 80vh;
+  height: 85vh;
   display: grid;
   place-content: center;
-  background-image: linear-gradient(190deg, #e6ffff 0, #e0f8fb 25%, #d9e5e7 50%, #d1d3d3 75%, #cac2bf 100%);
+//   background-image: radial-gradient(circle at 50% 50%, #ffffff 0, #ffffff 50%, #f4edef 100%);
+  background-color: rgb(242, 242, 242);
 }
 
 .contenedorFooter{
   height: 10vh;
-  background-image: linear-gradient(190deg, #cedffe 0, #b5bdcd 50%, #9c9c9e 100%);
+  background-color: #efefef;
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 1px -1px 11px -1px rgba(148,148,148,0.76);
+-webkit-box-shadow: 1px -1px 11px -1px rgba(148,148,148,0.76);
+-moz-box-shadow: 1px -1px 11px -1px rgba(148,148,148,0.76);
 
   p{
     margin: 0 5px;
@@ -156,6 +163,53 @@
 		transition: transform 0.25s ease-out;
 	}
 }
+
+.containerMenu{
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+#navBarBoton{
+	border: none;
+}
+
+.navbarFooter{
+	a{
+		margin: 0 5px;
+		text-decoration: none;
+		color: black;
+
+		&:hover{
+			color: rgb(109, 109, 109);
+		}
+	}
+}
+
+.contenedor__header{
+	display: flex;
+	justify-content: space-between;
+}
+
+.contenedor__navPrincipal{
+	width: 100%;
+}
+
+.logoPrincipal{
+	width: 20px;
+	height: 20px;
+}
+
+.contenedorCarrito{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	&__icono{
+		margin-right: 8px;
+	}
+}
+
 
 
 
