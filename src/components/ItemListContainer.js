@@ -1,60 +1,31 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { getAllProducts } from '../Api';
+import Loader from './Loader';
+import ItemList from './ItemList';
 
-const ItemListContainer = (prop) => {
+const ItemListContainer = () => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-  // const [counter, setCounter] = useState(0)
-  // const [searchText, setSearchText] = useState("")
-  // const [open, setOpen] = useState(false)
-  // const [loadMore, setLoadMore] = useState(false)
+    const getProducts = async () =>{
+        const data = await getAllProducts();
+        setProducts(data);
+        setLoading(false);
+    };
 
-  const [cargo, setCargo] = useState(false)
-  const [productos, setProductos] = useState([])
-
-  useEffect(()=>{
-    console.log("Pido algo a la base de datos")
-
-    setTimeout(()=>{
-      console.log("Termino de pedir la base de datos")
-      setCargo(true)
-
-      const ejemploProductos = [
-        {id:1, nombre: "Producto 1", precio: 100},
-        {id:2, nombre: "Producto 2", precio: 200},
-        {id:3, nombre: "Producto 3", precio: 300}
-      ]
-
-      setProductos(ejemploProductos)
-
-    }, 2000)
-  }, [])
-
-  // const handleClick = ()=>{
-  //   setCounter(counter + 1);
-  // };
-
-  // const handleOnChange = (e)=>{
-  //   setSearchText(e.target.value);
-  // };
-
-  // const handleToggleDrawer = ()=>{
-  //   setOpen(!open)
-  // };
+    useEffect(()=>{
+        getProducts();
+    }, []);
 
   return (
-    <div>
-      {/* {prop.greeting}
-      <p>Contador: {counter}</p>
-      <button onClick={handleClick}>Sumar</button>
-
-      <p>Drawer Open: {open ? "Abierto" : "Cerrado"}</p>
-      <button onClick={handleToggleDrawer}>toggle drawer</button>
-
-      <p>Texto: {searchText}</p>
-      <input type="text" onChange={handleOnChange} /> */}
-
-      {cargo ? "Termino de cargar" : "Cargando...."}
-    </div>
+    <>
+        <div className='containerProductos'>
+            {
+                loading ? <div className='containerProductos__loader'> <Loader /> </div> :
+                <div> <ItemList productos={products} /> </div>
+            }
+        </div>
+    </>
   )
 }
 

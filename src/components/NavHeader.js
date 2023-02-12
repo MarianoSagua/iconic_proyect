@@ -6,16 +6,18 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CartWidget from './CartWidget'
+import { Link } from 'react-router-dom';
 
 function OffcanvasExample() {
   return (
     <>
-      <div className='contenedor__navPrincipal'>
         {['lg'].map((expand) => (
-          <Navbar key={expand} bg="light" expand={expand} className="mb-3">
+          <Navbar key={expand} bg="light" expand={expand} className="mb-3" id='navBarPrincipal'>
             <Container fluid>
               <Navbar.Brand href="#">
-                <img src="/LogoIconic.png" alt="" className='logoPrincipal' />  Iconic
+                <Link to={"/"}>
+                  <img src="/LogoIconic.png" alt="" className='logoPrincipal' />  Iconic
+                </Link>
               </Navbar.Brand>
 
               <Navbar.Toggle id='navBarBoton' aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -27,16 +29,30 @@ function OffcanvasExample() {
               >
                 <Offcanvas.Header closeButton>
                   <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                    <img src="/LogoIconic.png" alt="" className='logoPrincipal' />  Iconic
+                    <Link to={"/"}>
+                      <img src="/LogoIconic.png" alt="" className='logoPrincipal' />  Iconic
+                    </Link>
                   </Offcanvas.Title>
                 </Offcanvas.Header>
 
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link href="#action1">Inicio</Nav.Link>
-                    <Nav.Link href="#action2">Remeras</Nav.Link>
-                    <Nav.Link href="#action3">Pantalones</Nav.Link>
-                    <Nav.Link href="#action4">Zapatillas</Nav.Link>
+                    <Nav.Link>
+                      <Link className='navBarHeader__link' to={"/"}>Inicio</Link>
+                    </Nav.Link>
+
+                    <Nav.Link>
+                      <Link className='navBarHeader__link' to={"/productos/electronica"}>Electronica</Link>
+                    </Nav.Link>
+
+                    <Nav.Link>
+                      <Link className='navBarHeader__link' to={"/productos/joyeria"}>Joyeria</Link>
+                    </Nav.Link>
+
+                    <Nav.Link>
+                      <Link className='navBarHeader__link' to={"/productos/ropa"}>Ropa</Link>
+                    </Nav.Link>
+
                     <Nav.Link href="#action5">
                       <CartWidget />
                     </Nav.Link>
@@ -46,7 +62,6 @@ function OffcanvasExample() {
             </Container>
           </Navbar>
         ))}
-      </div>
     </>
   );
 }
